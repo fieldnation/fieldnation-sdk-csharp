@@ -1,0 +1,202 @@
+﻿/* 
+ * FIELDNATION RESTful API V2
+ */
+
+using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = FieldNation.SDK.Client.SwaggerDateConverter;
+
+namespace FieldNation.SDK.Model
+{
+    /// <summary>
+    /// MessageFrom
+    /// </summary>
+    [DataContract]
+    public partial class MessageFrom :  IEquatable<MessageFrom>, IValidatableObject
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageFrom" /> class.
+        /// </summary>
+        /// <param name="Id">Id.</param>
+        /// <param name="Name">Name.</param>
+        /// <param name="Thumbnail">Thumbnail.</param>
+        /// <param name="HideWoManager">HideWoManager.</param>
+        /// <param name="MsgLink">MsgLink.</param>
+        /// <param name="Role">Role.</param>
+        public MessageFrom(int? Id = default(int?), string Name = default(string), string Thumbnail = default(string), bool? HideWoManager = default(bool?), string MsgLink = default(string), string Role = default(string))
+        {
+            this.Id = Id;
+            this.Name = Name;
+            this.Thumbnail = Thumbnail;
+            this.HideWoManager = HideWoManager;
+            this.MsgLink = MsgLink;
+            this.Role = Role;
+        }
+        
+        /// <summary>
+        /// Gets or Sets Id
+        /// </summary>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public int? Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Name
+        /// </summary>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Thumbnail
+        /// </summary>
+        [DataMember(Name="thumbnail", EmitDefaultValue=false)]
+        public string Thumbnail { get; set; }
+
+        /// <summary>
+        /// Gets or Sets HideWoManager
+        /// </summary>
+        [DataMember(Name="hideWoManager", EmitDefaultValue=false)]
+        public bool? HideWoManager { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MsgLink
+        /// </summary>
+        [DataMember(Name="msgLink", EmitDefaultValue=false)]
+        public string MsgLink { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Role
+        /// </summary>
+        [DataMember(Name="role", EmitDefaultValue=false)]
+        public string Role { get; set; }
+
+        /// <summary>
+        /// Returns the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.Append("class MessageFrom {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Thumbnail: ").Append(Thumbnail).Append("\n");
+            sb.Append("  HideWoManager: ").Append(HideWoManager).Append("\n");
+            sb.Append("  MsgLink: ").Append(MsgLink).Append("\n");
+            sb.Append("  Role: ").Append(Role).Append("\n");
+            sb.Append("}\n");
+            return sb.ToString();
+        }
+  
+        /// <summary>
+        /// Returns the JSON string presentation of the object
+        /// </summary>
+        /// <returns>JSON string presentation of the object</returns>
+        public string ToJson()
+        {
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
+        }
+
+        /// <summary>
+        /// Returns true if objects are equal
+        /// </summary>
+        /// <param name="obj">Object to be compared</param>
+        /// <returns>Boolean</returns>
+        public override bool Equals(object obj)
+        {
+            // credit: http://stackoverflow.com/a/10454552/677735
+            return this.Equals(obj as MessageFrom);
+        }
+
+        /// <summary>
+        /// Returns true if MessageFrom instances are equal
+        /// </summary>
+        /// <param name="other">Instance of MessageFrom to be compared</param>
+        /// <returns>Boolean</returns>
+        public bool Equals(MessageFrom other)
+        {
+            // credit: http://stackoverflow.com/a/10454552/677735
+            if (other == null)
+                return false;
+
+            return 
+                (
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
+                ) && 
+                (
+                    this.Name == other.Name ||
+                    this.Name != null &&
+                    this.Name.Equals(other.Name)
+                ) && 
+                (
+                    this.Thumbnail == other.Thumbnail ||
+                    this.Thumbnail != null &&
+                    this.Thumbnail.Equals(other.Thumbnail)
+                ) && 
+                (
+                    this.HideWoManager == other.HideWoManager ||
+                    this.HideWoManager != null &&
+                    this.HideWoManager.Equals(other.HideWoManager)
+                ) && 
+                (
+                    this.MsgLink == other.MsgLink ||
+                    this.MsgLink != null &&
+                    this.MsgLink.Equals(other.MsgLink)
+                ) && 
+                (
+                    this.Role == other.Role ||
+                    this.Role != null &&
+                    this.Role.Equals(other.Role)
+                );
+        }
+
+        /// <summary>
+        /// Gets the hash code
+        /// </summary>
+        /// <returns>Hash code</returns>
+        public override int GetHashCode()
+        {
+            // credit: http://stackoverflow.com/a/263416/677735
+            unchecked // Overflow is fine, just wrap
+            {
+                int hash = 41;
+                // Suitable nullity checks etc, of course :)
+                if (this.Id != null)
+                    hash = hash * 59 + this.Id.GetHashCode();
+                if (this.Name != null)
+                    hash = hash * 59 + this.Name.GetHashCode();
+                if (this.Thumbnail != null)
+                    hash = hash * 59 + this.Thumbnail.GetHashCode();
+                if (this.HideWoManager != null)
+                    hash = hash * 59 + this.HideWoManager.GetHashCode();
+                if (this.MsgLink != null)
+                    hash = hash * 59 + this.MsgLink.GetHashCode();
+                if (this.Role != null)
+                    hash = hash * 59 + this.Role.GetHashCode();
+                return hash;
+            }
+        }
+
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
+    }
+
+}
